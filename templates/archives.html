@@ -1,0 +1,40 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<main class="main" role="main">
+            <article class="content article article-archives article-type-list" itemscope>
+                <header class="article-header">
+                    <h1 itemprop="title">归档</h1>
+                    <p class="text-muted">共 {{ count }} 篇文章</p>
+                </header>
+                <div class="article-body">
+                    {% for archive in archives %}
+                    <section class="panel panel-default b-no">
+                        <div class="panel-heading" role="tab">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse2018" aria-expanded="true">
+                                    <i class="icon icon-calendar-plus text-active"></i>
+                                    <i class="icon icon-calendar-minus text"></i>
+                                    {{ archive.year }}
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse2018" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2018">
+                            <div class="panel-body">
+                                <div class="collection">
+                                    {% for article in archive.articles %}
+                                    <a href="{{ article.url }}" class="collection-item" target="_blank" itemprop="url">
+                                        <time datetime="{{ article.update_time|date:"Y-m-d-s" }}" itemprop="datePublished">{{ article.update_time|date:"Y-m-d" }}</time>
+                                        <span>&nbsp;&nbsp;&nbsp;</span>
+                                        {{ article.title }}
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {% endfor %}
+                </div>
+            </article>
+        </main>
+{% endblock %}

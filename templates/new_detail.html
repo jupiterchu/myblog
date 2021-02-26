@@ -1,0 +1,128 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<main class="main" role="main">
+    <div class="content">
+        <article id="post-那些有趣的注释，有没有你曾用过的" class="article article-type-post" itemscope
+                 itemtype="http://schema.org/BlogPosting">
+            <div class="article-header"><h1 class="article-title" itemprop="name">{{ article.title }}</h1>
+                <div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a
+                        href="{{ article.url }}" class="article-date"><time
+                        datetime="2018-03-28T12:45:41.000Z" itemprop="datePublished">2018-03-28</time></a></span> <span
+                        class="article-category"><i class="icon icon-folder"></i> <a class="article-category-link"
+                                                                                     href="/categories/开发/">开发</a></span>
+                    <span class="article-tag"><i class="icon icon-tags"></i> <a class="article-tag-link"
+                                                                                href="/tags/程序员/">程序员</a></span> <span
+                            class="article-read hidden-xs"><i class="icon icon-eye-fill" aria-hidden="true"></i> <span
+                            id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span></span></span>
+                    <span class="post-comment"><i class="icon icon-comment"></i> <a
+                            href="{{ article.url }}#comments" class="article-comment-link">评论</a></span>
+                    <span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: {{ article.length }}(字)</span>
+                    <span
+                            class="post-readcount hidden-xs"
+                            itemprop="timeRequired">阅读时长: {{ article.read_time }}(分)</span></div>
+            </div>
+            {{ article.context |safe }}
+            <div class="article-footer">
+                <blockquote class="mt-2x">
+                    <ul class="post-copyright list-unstyled">
+                        <li class="post-copyright-link hidden-xs"><strong>本文链接：</strong> <a
+                                href="https://blog.cofess.com/2018/03/28/那些有趣的注释，有没有你曾用过的.html" title="那些有趣的注释，有没有你曾用过的"
+                                target="_blank"
+                                rel="external">{{ current_path }}</a></li>
+                        <li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a
+                                href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank"
+                                rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+                        </li>
+                    </ul>
+                </blockquote>
+                <div class="panel panel-default panel-badger">
+                    <div class="panel-body">
+                        <figure class="media">
+                            <div class="media-left"><a href="https://github.com/jupiterchu" target="_blank"
+                                                       class="img-burn thumb-sm visible-lg"><img
+                                    src="/static/images/avatar.jpg" class="img-rounded w-full" alt=""></a></div>
+                            <div class="media-body"><h3 class="media-heading"><a href="https://github.com/jupiterchu"
+                                                                                 target="_blank"><span
+                                    class="text-dark">Jove</span><small class="ml-1x">Python Developer &amp;
+                                Designer</small></a></h3>
+                                <div>喜欢新事物，对新的技术有追求。喜欢 coding。</div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <section id="comments"></section>
+    </div>
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+            <ul class="pager pull-left">
+                <li class="next"><a href="{{ next_article.url }}"
+                                    title="{{ next_article.title }}">
+                    <span>下一篇&nbsp;&nbsp;</span>
+                    <i class="icon icon-angle-right" aria-hidden="true"></i></a></li>
+            </ul>
+            <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
+                    data-target="#donateModal"><span>赏</span></button>
+            <div class="bar-right">
+                <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                     data-mobile-sites="weibo,qq,qzone"></div>
+            </div>
+        </div>
+    </nav>
+    <div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content donate">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body">
+                    <div class="donate-box">
+                        <div class="donate-head"><p>感谢您的支持，我会继续努力的!</p></div>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+                                <div class="donate-payimg"><img src="/static/images/donate/alipayimg.png" alt="扫码支持"
+                                                                title="扫一扫"></div>
+                                <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+                                <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p></div>
+                            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+                                <div class="donate-payimg"><img src="/static/images/donate/wechatpayimg.png" alt="扫码支持"
+                                                                title="扫一扫"></div>
+                                <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+                                <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p></div>
+                        </div>
+                        <div class="donate-footer">
+                            <ul class="nav nav-tabs nav-justified" role="tablist">
+                                <li role="presentation" class="active"><a href="#alipay" id="alipay-tab" role="tab"
+                                                                          data-toggle="tab" aria-controls="alipay"
+                                                                          aria-expanded="true"><i
+                                        class="icon icon-alipay"></i> 支付宝</a></li>
+                                <li role="presentation"><a href="#wechatpay" role="tab" id="wechatpay-tab"
+                                                           data-toggle="tab" aria-controls="wechatpay"
+                                                           aria-expanded="false"><i class="icon icon-wepay"></i>
+                                    微信支付</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    <script src="/static/js/md5.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a3a230f27a3c0c8ed2cc',
+        clientSecret: '1dda92fa0f2ae7195e1ae99b1194e33a0360ef47',
+        repo: 'myblog',
+        owner: 'jupiterchu',
+        admin: ['jupiterchu'],
+        id: md5(location.href),
+        distractionFreeMode: false
+    });
+    gitalk.render("comments")</script>
+{% endblock %}

@@ -5,7 +5,7 @@
             <article class="article article-categories article-type-list" itemscope>
                 <header class="article-header">
                     <h1 itemprop="name" class="hidden-xs">分类</h1>
-                    <p class="text-muted hidden-xs">共 5 个分类</p>
+                    <p class="text-muted hidden-xs">共 {{ length_categories }} 个分类</p>
                     <nav role="navigation" id="nav-main" class="okayNav">
                         <ul>
                             <li>
@@ -37,7 +37,7 @@
                             <div class="panel-body">
                                 <div class="collection">
                                     {% for article in category.articles %}
-                                    <a href="{{ category.article.url }}" class="collection-item" target="_blank" itemprop="url">
+                                    <a href="{{ article.url }}" class="collection-item" target="_blank" itemprop="url">
                                         <time datetime="{{ article.create_time }}" itemprop="datePublished">{{ article.create_time|date:'Y-d-m' }}</time>
                                         <span>&nbsp;&nbsp;&nbsp;</span>
                                         {{ article.title }}

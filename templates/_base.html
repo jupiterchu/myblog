@@ -102,10 +102,10 @@
         <div class="widget"><h3 class="widget-title">标签</h3>
             <div class="widget-body">
                 <ul class="tag-list">
-                    {% for ttag in l_tags %}
+                    {% for tag in l_tags %}
                     <li class="tag-list-item"><a class="tag-list-link"
-                                                 href="{{ ttag.url }}">{{ ttag.name }}</a><span
-                            class="tag-list-count">{{ ttag.count }}</span></li>
+                                                 href="{{ tag.url }}">{{ tag.name }}</a><span
+                            class="tag-list-count">{{ tag.count }}</span></li>
                     {% endfor %}
                 </ul>
             </div>

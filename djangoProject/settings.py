@@ -25,7 +25,7 @@ SECRET_KEY = '$ky_wegtrgsvh(ldyl4&6*)cf2y46la_baz1seu=aasara5j+a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myblog.apps.MyblogConfig',
     'mdeditor',
-    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +82,7 @@ DATABASES = {
         'NAME': 'django_test',
         'USER': 'root',
         'PASSWORD': '123456',
-        'HOST': 'my_linux',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }

@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view()),
     path('<int:year>/', DetailView.as_view()),
-    path('<str:year>/', DetailView.as_view()),
+    # path('<str:year>/', DetailView.as_view()),
     path('archives/', ArchiveView.as_view()),
     path('categories/', CategoryView.as_view()),
     path('categories/<str:name>/', CategoryView.as_view()),

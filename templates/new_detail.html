@@ -3,16 +3,16 @@
 {% block content %}
 <main class="main" role="main">
     <div class="content">
-        <article id="post-那些有趣的注释，有没有你曾用过的" class="article article-type-post" itemscope
+        <article id="post-{{ article.title }}" class="article article-type-post" itemscope
                  itemtype="http://schema.org/BlogPosting">
             <div class="article-header"><h1 class="article-title" itemprop="name">{{ article.title }}</h1>
                 <div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a
                         href="{{ article.url }}" class="article-date"><time
-                        datetime="2018-03-28T12:45:41.000Z" itemprop="datePublished">2018-03-28</time></a></span> <span
+                        datetime="{{ article.update_time }}" itemprop="datePublished">{{ article.update_time|date:"Y-m-d" }}</time></a></span> <span
                         class="article-category"><i class="icon icon-folder"></i> <a class="article-category-link"
-                                                                                     href="/categories/开发/">开发</a></span>
+                                                                                     href="{{ categories.permalink }}">{{ categories.name }}</a></span>
                     <span class="article-tag"><i class="icon icon-tags"></i> <a class="article-tag-link"
-                                                                                href="/tags/程序员/">程序员</a></span> <span
+                                                                                href="{{ tags.permalink }}">{{ tags.name }}</a></span> <span
                             class="article-read hidden-xs"><i class="icon icon-eye-fill" aria-hidden="true"></i> <span
                             id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span></span></span>
                     <span class="post-comment"><i class="icon icon-comment"></i> <a

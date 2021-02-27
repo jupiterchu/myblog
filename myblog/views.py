@@ -54,6 +54,10 @@ class DetailView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         article = Article.objects.get(url=request.path)
+        categories = article.category_set.values()[0]
+        tags = article.tag_set.values()[0]
+        article.length = len(article.context)
+        article.read_time = article.length // 180 if article.length // 180 else 1
         article.context = markdown.markdown(article.context,
                                             extensions=['extra', 'codehilite', 'toc', ],
                                             safe_mode=True,
@@ -119,14 +123,12 @@ class CategoryView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         name = kwargs.get('name')
+        tmp_dict = {}
+
         if not name:
             categories = Category.objects.all()
         else:
             categories = Category.objects.filter(name=name)
-
-        l_tags, l_categories = get_left_value(categories=categories)
-
-        tmp_dict = {}
         for category in categories:
             name = category.name
             tmp_dict.setdefault(name, {'name': name, 'url': None, 'articles': [], 'count': 0})
@@ -134,8 +136,11 @@ class CategoryView(TemplateView):
             tmp_dict[name]['url'] = category.permalink
             tmp_dict[name]['count'] += 1
 
-        categories = tmp_dict.values()
 
+        l_tags, l_categories = get_left_value()
+
+        categories = tmp_dict.values()
+        length_categories = len(categories)
 
         return self.render_to_response(locals())
 
@@ -151,7 +156,7 @@ class TagView(TemplateView):
         else:
             tags = Tag.objects.filter(name=name)
 
-        l_tags, l_categories = get_left_value(tags=tags)
+        l_tags, l_categories = get_left_value()
 
         tmp_dict = {}
         for tag in tags:
